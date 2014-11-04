@@ -14,17 +14,18 @@
   ~ limitations under the License.
   -->
 
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".DetailActivity">
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="250dp"
         android:scaleType="centerCrop"/>
 
     <!--android:transitionName="photo_hero"-->
@@ -32,10 +33,38 @@
     <TextView
         android:id="@+id/text"
         android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_below="@+id/image"
-        android:layout_centerHorizontal="true"
     />
 
-</RelativeLayout>
+    <!--Button
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="#000"
+        android:text="RippleDrawable"
+        android:stateListAnimator="@anim/button_elevation"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/text"
+    / -->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/primary" />
+
+    <Button
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="#000"
+        android:text="RippleDrawable"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/text"
+        android:background="@drawable/button_selector_ripple"
+    />
+</LinearLayout>

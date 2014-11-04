@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -32,12 +33,12 @@ public class DetailActivity extends Activity {
 
 
     private ImageView mImageView = null;
+    private TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
 
         /*getWindow().getEnterTransition().addListener(new TransitionAdapter() {
             @Override
@@ -57,7 +58,13 @@ public class DetailActivity extends Activity {
         Image _bean = (Image)getIntent().getSerializableExtra(EXTRA_IMAGE);
         ImageView image = (ImageView) findViewById(R.id.image);
         image.setViewName(EXTRA_IMAGE_TRANSICTION);
-        Picasso.with(this).load(CodeUtils.getImageResourceId(DetailActivity.this, _bean.imageName)).into(image);
+        Picasso.with(this).
+                load(CodeUtils.getImageResourceId(DetailActivity.this, _bean.imageName)).
+                into(image);
+
+        text = (TextView)findViewById(R.id.text);
+        text.setText(_bean.description);
+
     }
 
     @Override
