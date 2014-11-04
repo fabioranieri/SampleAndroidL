@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Explode;
+import android.transition.Slide;
 import android.transition.Transition;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,9 +33,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         getWindow().requestFeature(android.view.Window.FEATURE_CONTENT_TRANSITIONS);
-        Transition ts = new Explode(); //Slide();
-        ts.setStartDelay(2000);
-        ts.setDuration(5000);
+        Transition ts = /*new Explode();*/new Slide();
+        //ts.setStartDelay(2000);
+        ts.setDuration(500);
 
         /*
          * If you have set an enter transition for the second activity,

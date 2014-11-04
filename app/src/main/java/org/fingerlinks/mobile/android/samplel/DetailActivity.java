@@ -1,5 +1,6 @@
 package org.fingerlinks.mobile.android.samplel;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 
 /**
@@ -13,6 +14,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
 import android.transition.Explode;
 import android.transition.Transition;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,12 +38,26 @@ public class DetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+
+        /*getWindow().getEnterTransition().addListener(new TransitionAdapter() {
+            @Override
+            public void onTransitionEnd(Transition transition) {
+                ImageView hero = (ImageView) findViewById(R.id.image);
+                ObjectAnimator color = ObjectAnimator.ofArgb(hero.getColorFilter(), "color", 0);
+                color.addUpdateListener(new ColorFilterListener(hero));
+                color.start();
+
+                findViewById(R.id.info).animate().alpha(1.0f);
+                findViewById(R.id.star).animate().alpha(1.0f);
+
+                getWindow().getEnterTransition().removeListener(this);
+            }
+        });*/
+
         Image _bean = (Image)getIntent().getSerializableExtra(EXTRA_IMAGE);
         ImageView image = (ImageView) findViewById(R.id.image);
-        //View.setTransitionName(image, EXTRA_IMAGE);
-        Picasso.with(this).load(
-                CodeUtils.getImageResourceId(DetailActivity.this, _bean.imageName))
-                .into(image);
+        image.setViewName(EXTRA_IMAGE_TRANSICTION);
+        Picasso.with(this).load(CodeUtils.getImageResourceId(DetailActivity.this, _bean.imageName)).into(image);
     }
 
     @Override
@@ -66,10 +82,14 @@ public class DetailActivity extends Activity {
     public static void launch(Activity activity, View transitionView, Image bean) {
         Intent intent = new Intent(activity, DetailActivity.class);
         intent.putExtra(EXTRA_IMAGE, bean);
+
+        transitionView.setViewName(EXTRA_IMAGE_TRANSICTION);
+
         activity.startActivity(intent,
                 ActivityOptions.makeSceneTransitionAnimation(
-                activity).toBundle());
+                activity, Pair.create(transitionView, EXTRA_IMAGE_TRANSICTION)).toBundle());
     }
 
     public static final String EXTRA_IMAGE = DetailActivity.class.getName()+":image";
+    public static final String EXTRA_IMAGE_TRANSICTION = DetailActivity.class.getName()+":image_transiction";
 };
