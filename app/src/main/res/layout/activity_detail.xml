@@ -63,6 +63,7 @@
         android:textAppearance="?android:textAppearanceLarge"
         android:textColor="#000"
         android:text="RippleDrawable"
+        android:onClick="startScheduleActivity"
         android:layout_alignParentBottom="true"
         android:layout_below="@id/text"
         android:background="@drawable/button_selector_ripple"

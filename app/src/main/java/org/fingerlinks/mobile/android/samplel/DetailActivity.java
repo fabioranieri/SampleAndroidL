@@ -97,6 +97,11 @@ public class DetailActivity extends Activity {
                 activity, Pair.create(transitionView, EXTRA_IMAGE_TRANSICTION)).toBundle());
     }
 
+    public void startScheduleActivity(View view) {
+        Intent intent = new Intent(DetailActivity.this, TestJobServiceActivity.class);
+        startActivity(intent);
+    }
+
     public static final String EXTRA_IMAGE = DetailActivity.class.getName()+":image";
     public static final String EXTRA_IMAGE_TRANSICTION = DetailActivity.class.getName()+":image_transiction";
 };
