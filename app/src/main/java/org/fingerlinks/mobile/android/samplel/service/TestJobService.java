@@ -101,9 +101,9 @@ public class TestJobService extends JobService {
 
     /** Send job to the JobScheduler. */
     public void scheduleJob(JobInfo t) {
-        Log.d(TAG, "Scheduling job");
+        /*Log.d(TAG, "Scheduling job");
         JobScheduler tm = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
-        tm.schedule(t);
+        tm.schedule(t);*/
     }
 
     /**

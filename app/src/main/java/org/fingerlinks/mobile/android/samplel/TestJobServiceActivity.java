@@ -139,9 +139,9 @@ public class TestJobServiceActivity extends Activity {
         boolean requiresUnmetered = mWiFiConnectivityRadioButton.isChecked();
         boolean requiresAnyConnectivity = mAnyConnectivityRadioButton.isChecked();
         if (requiresUnmetered) {
-            builder.setRequiredNetworkCapabilities(JobInfo.NetworkType.UNMETERED);
+            builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED);
         } else if (requiresAnyConnectivity) {
-            builder.setRequiredNetworkCapabilities(JobInfo.NetworkType.ANY);
+            builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
         }
         builder.setRequiresDeviceIdle(mRequiresIdleCheckbox.isChecked());
         builder.setRequiresCharging(mRequiresChargingCheckBox.isChecked());
@@ -151,9 +151,9 @@ public class TestJobServiceActivity extends Activity {
     }
 
     public void cancelAllJobs(View v) {
-        JobScheduler tm =
+        /*JobScheduler tm =
                 (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
-        tm.cancelAll();
+        tm.cancelAll();*/
     }
 
     /**

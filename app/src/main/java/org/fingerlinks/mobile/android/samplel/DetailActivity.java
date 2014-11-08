@@ -57,7 +57,7 @@ public class DetailActivity extends Activity {
 
         Image _bean = (Image)getIntent().getSerializableExtra(EXTRA_IMAGE);
         ImageView image = (ImageView) findViewById(R.id.image);
-        image.setViewName(EXTRA_IMAGE_TRANSICTION);
+        image.setTransitionName(EXTRA_IMAGE_TRANSICTION);
         Picasso.with(this).
                 load(CodeUtils.getImageResourceId(DetailActivity.this, _bean.imageName)).
                 into(image);
@@ -90,16 +90,17 @@ public class DetailActivity extends Activity {
         Intent intent = new Intent(activity, DetailActivity.class);
         intent.putExtra(EXTRA_IMAGE, bean);
 
-        transitionView.setViewName(EXTRA_IMAGE_TRANSICTION);
+        transitionView.setTransitionName(EXTRA_IMAGE_TRANSICTION);
 
         activity.startActivity(intent,
                 ActivityOptions.makeSceneTransitionAnimation(
-                activity, Pair.create(transitionView, EXTRA_IMAGE_TRANSICTION)).toBundle());
+                activity,
+                        Pair.create(transitionView, EXTRA_IMAGE_TRANSICTION)).toBundle());
     }
 
     public void startScheduleActivity(View view) {
-        Intent intent = new Intent(DetailActivity.this, TestJobServiceActivity.class);
-        startActivity(intent);
+        /*Intent intent = new Intent(DetailActivity.this, TestJobServiceActivity.class);
+        startActivity(intent);*/
     }
 
     public static final String EXTRA_IMAGE = DetailActivity.class.getName()+":image";
